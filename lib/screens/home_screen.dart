@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lets_meet/screens/history_meeting_screen.dart';
+import 'package:lets_meet/screens/meeting_screen.dart';
 import 'package:lets_meet/utils/colors.dart';
-import 'package:lets_meet/widgets/meeting_button.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -17,6 +18,13 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  List<Widget> pages = [
+    const MeetingScreen(),
+    const HistoryMeetingScreen(),
+    const Text("Contacts"),
+    const Text("Seetings"),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,40 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0,
         backgroundColor: backgroundColor,
       ),
-      body: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              MeetingButton(
-                text: "New Meeting",
-                onPressed: () {},
-                iconData: Icons.videocam,
-              ),
-              MeetingButton(
-                  text: "Join Meeting",
-                  onPressed: () {},
-                  iconData: Icons.add_box_rounded),
-              MeetingButton(
-                text: "Schedule Meet",
-                onPressed: () {},
-                iconData: Icons.calendar_today,
-              ),
-            ],
-          ),
-          const Expanded(
-            child: Center(
-              child: Text(
-                "Create/Join Meeting with just a click!",
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 18,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+      body: pages[_pageIndex],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: footerColor,
         selectedItemColor: Colors.grey.shade300,
