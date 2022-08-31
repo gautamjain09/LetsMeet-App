@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const MeetingScreen(),
     const HistoryMeetingScreen(),
     const Text("Contacts"),
-    const Text("Seetings"),
+    const Text("Settings"),
   ];
 
   @override

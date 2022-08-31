@@ -10,6 +10,6 @@ class HistoryMeetingScreen extends StatefulWidget {
 class _HistoryMeetingScreenState extends State<HistoryMeetingScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Container();
   }
 }

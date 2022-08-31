@@ -1,6 +1,9 @@
 import "package:flutter/material.dart";
+import 'package:jitsi_meet/jitsi_meet.dart';
 import 'package:lets_meet/services/auth_methods.dart';
+import 'package:lets_meet/services/jitsi_meet_methods.dart';
 import 'package:lets_meet/utils/colors.dart';
+import 'package:lets_meet/widgets/meeting_options.dart';
 
 class VideoCallScreen extends StatefulWidget {
   const VideoCallScreen({Key? key}) : super(key: key);
@@ -15,14 +18,36 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
   late TextEditingController meetingIdController = TextEditingController();
   late TextEditingController nameController = TextEditingController();
 
+  final JitsiMeetMethods jitsiMeetMethods = JitsiMeetMethods();
+
+  bool isAudiomuted = true;
+  bool isVideoMuted = true;
+
   @override
   void initState() {
     meetingIdController = TextEditingController();
-    nameController = TextEditingController(text: authMethods.user.displayName);
+    nameController = TextEditingController(
+      text: authMethods.user.displayName,
+    );
     super.initState();
   }
 
-  joinMeeting() async {}
+  @override
+  void dispose() {
+    super.dispose();
+    meetingIdController.dispose();
+    nameController.dispose();
+    JitsiMeet.removeAllListeners(); // Avoids memory leeks
+  }
+
+  joinMeeting() {
+    jitsiMeetMethods.createMeeting(
+      roomName: meetingIdController.text,
+      isAudiomuted: isAudiomuted,
+      isVideoMuted: isVideoMuted,
+      username: nameController.text, // toString will give error
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +63,7 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
       ),
       body: Column(
         children: [
+          // <---- Join Meeting with Room ID and Name ---->
           Container(
             color: secondaryBackgroundColor,
             child: TextField(
@@ -52,14 +78,14 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
               ),
             ),
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 2),
           Container(
             color: secondaryBackgroundColor,
             child: TextField(
               controller: nameController,
               maxLines: 1,
               textAlign: TextAlign.center,
-              keyboardType: TextInputType.number,
+              keyboardType: TextInputType.name,
               decoration: const InputDecoration(
                 border: InputBorder.none,
                 hintText: "Name",
@@ -67,17 +93,44 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
               ),
             ),
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 10),
           InkWell(
-            // onTap: joinMeeting(),
+            onTap: joinMeeting,
             child: const Padding(
               padding: EdgeInsets.all(8),
               child: Text(
                 "Join",
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
-          )
+          ),
+          const SizedBox(
+            height: 40,
+          ),
+
+          // <-------- Mute Audio, Video options -------------->
+          MeetingOptions(
+            text: "Mute Audio",
+            isMute: isAudiomuted,
+            onChanged: (val) {
+              setState(() {
+                isAudiomuted = val;
+              });
+            },
+          ),
+          const SizedBox(height: 2),
+          MeetingOptions(
+            text: "Turn off Video",
+            isMute: isVideoMuted,
+            onChanged: (val) {
+              setState(() {
+                isVideoMuted = val;
+              });
+            },
+          ),
         ],
       ),
     );

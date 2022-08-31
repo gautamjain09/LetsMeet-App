@@ -29,6 +29,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -46,11 +47,13 @@ class _MeetingScreenState extends State<MeetingScreen> {
                 joinMeeting(context);
               },
             ),
-            MeetingButton(
-              text: "Schedule Meet",
-              iconData: Icons.calendar_today,
-              onPressed: () {},
-            ),
+
+            // Pending To be Done.....
+            // MeetingButton(
+            //   text: "Schedule Meet",
+            //   iconData: Icons.calendar_today,
+            //   onPressed: () {},
+            // ),
           ],
         ),
         const Expanded(
