@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lets_meet/screens/history_meeting_screen.dart';
 import 'package:lets_meet/screens/meeting_screen.dart';
+import 'package:lets_meet/services/auth_methods.dart';
 import 'package:lets_meet/utils/colors.dart';
+import 'package:lets_meet/widgets/custom_button.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final AuthMethods authMethods = AuthMethods();
   int _pageIndex = 0;
   void onPageChanged(int pageIndex) {
     setState(() {
@@ -21,8 +24,17 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> pages = [
     const MeetingScreen(),
     const HistoryMeetingScreen(),
-    const Text("Contacts"),
-    const Text("Settings"),
+    const Text("Conctacts feature in Progress"),
+    Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const SizedBox(height: 10),
+        CustomButton(
+          text: "Log Out",
+          onPressed: () => authMethods.signOut(context),
+        ),
+      ],
+    ),
   ];
 
   @override

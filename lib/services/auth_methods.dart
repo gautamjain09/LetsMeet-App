@@ -45,4 +45,12 @@ class AuthMethods {
     }
     return result;
   }
+
+  void signOut() async {
+    try {
+      _auth.signOut();
+    } on FirebaseException catch (e) {
+      print(e.message!);
+    }
+  }
 }

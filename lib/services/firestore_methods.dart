@@ -6,6 +6,12 @@ class FireStoreMethods {
   final FirebaseAuth auth = FirebaseAuth.instance;
   // final User user = auth.currentUser!;
 
+  Stream get getMeetingHistory => firestore
+      .collection('users')
+      .doc(auth.currentUser!.uid)
+      .collection('meetings')
+      .snapshots();
+
   void addMeetingHistory(String roomName) async {
     try {
       await firestore
