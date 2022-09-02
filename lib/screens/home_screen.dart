@@ -13,25 +13,30 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final AuthMethods authMethods = AuthMethods();
   int _pageIndex = 0;
-  void onPageChanged(int pageIndex) {
-    setState(() {
-      _pageIndex = pageIndex;
-    });
-  }
 
   List<Widget> pages = [
     const MeetingScreen(),
     const HistoryMeetingScreen(),
-    const Text("Conctacts feature in Progress"),
+    Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: const [
+        Text(
+          "Contacts will be shown here",
+          style: TextStyle(
+            fontSize: 16,
+            color: Colors.grey,
+          ),
+        ),
+      ],
+    ),
     Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const SizedBox(height: 10),
         CustomButton(
           text: "Log Out",
-          onPressed: () => authMethods.signOut(context),
+          onPressed: () => AuthMethods().signOut(),
         ),
       ],
     ),
@@ -59,7 +64,11 @@ class _HomeScreenState extends State<HomeScreen> {
         unselectedItemColor: Colors.grey.shade600,
         unselectedFontSize: 11,
         selectedFontSize: 11,
-        onTap: onPageChanged,
+        onTap: (index) {
+          setState(() {
+            _pageIndex = index;
+          });
+        },
         currentIndex: _pageIndex,
         type: BottomNavigationBarType.fixed,
         items: const [

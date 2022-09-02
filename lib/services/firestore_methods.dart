@@ -4,8 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 class FireStoreMethods {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   final FirebaseAuth auth = FirebaseAuth.instance;
-  // final User user = auth.currentUser!;
 
+  // Getters
   Stream get getMeetingHistory => firestore
       .collection('users')
       .doc(auth.currentUser!.uid)

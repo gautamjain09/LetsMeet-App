@@ -8,6 +8,7 @@ class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  // Getters
   Stream<User?> get authChanges => _auth.authStateChanges();
   User get user => _auth.currentUser!;
 

@@ -15,14 +15,14 @@ class _MeetingScreenState extends State<MeetingScreen> {
 
   createNewMeeting() async {
     var random = Random();
-    String roomName = (random.nextInt(10000000) + 10000000).toString();
+    String roomName = (random.nextInt(1000000) + 1000000).toString();
 
     _jitsiMeetMethods.createMeeting(
         roomName: roomName, isAudiomuted: true, isVideoMuted: true);
   }
 
   joinMeeting(BuildContext context) async {
-    Navigator.pushNamed(context, '/video-call-route');
+    Navigator.pushNamed(context, '/join-meet-route');
   }
 
   @override

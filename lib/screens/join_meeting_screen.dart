@@ -14,11 +14,10 @@ class VideoCallScreen extends StatefulWidget {
 
 class _VideoCallScreenState extends State<VideoCallScreen> {
   final AuthMethods authMethods = AuthMethods();
+  final JitsiMeetMethods jitsiMeetMethods = JitsiMeetMethods();
 
   late TextEditingController meetingIdController = TextEditingController();
   late TextEditingController nameController = TextEditingController();
-
-  final JitsiMeetMethods jitsiMeetMethods = JitsiMeetMethods();
 
   bool isAudiomuted = true;
   bool isVideoMuted = true;
@@ -37,7 +36,7 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
     super.dispose();
     meetingIdController.dispose();
     nameController.dispose();
-    JitsiMeet.removeAllListeners(); // Avoids memory leeks
+    JitsiMeet.removeAllListeners(); // to Avoids memory leeks
   }
 
   joinMeeting() {
@@ -64,6 +63,7 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
       body: Column(
         children: [
           // <---- Join Meeting with Room ID and Name ---->
+
           Container(
             color: secondaryBackgroundColor,
             child: TextField(
@@ -112,6 +112,7 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
           ),
 
           // <-------- Mute Audio, Video options -------------->
+
           MeetingOptions(
             text: "Mute Audio",
             isMute: isAudiomuted,

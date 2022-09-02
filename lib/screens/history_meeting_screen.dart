@@ -15,7 +15,7 @@ class _HistoryMeetingScreenState extends State<HistoryMeetingScreen> {
   Widget build(BuildContext context) {
     return StreamBuilder(
       stream: fireStoreMethods.getMeetingHistory,
-      builder: (context, snapshot) {
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
             child: CircularProgressIndicator.adaptive(),
@@ -25,13 +25,13 @@ class _HistoryMeetingScreenState extends State<HistoryMeetingScreen> {
           itemCount: (snapshot.data! as dynamic).docs.length,
           itemBuilder: ((context, index) => ListTile(
                 title: Padding(
-                  padding: const EdgeInsets.only(top: 5),
+                  padding: const EdgeInsets.only(top: 2),
                   child: Text(
-                    "Room Name: ${(snapshot.data! as dynamic).docs[index]['roomName']}",
+                    "Room Name: ${(snapshot.data!).docs[index]['roomName']}",
                   ),
                 ),
                 subtitle: Text(
-                  "Joined on ${((snapshot.data! as dynamic).docs[index]['createdTime'].toDate())}",
+                  "Joined on ${((snapshot.data!).docs[index]['createdTime'].toDate())}",
                 ),
               )),
         );

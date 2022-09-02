@@ -11,6 +11,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final AuthMethods _authMethods = AuthMethods();
+
   void googleSignIn() async {
     bool result = await _authMethods.signInWithGoogle(context);
     if (result) {
