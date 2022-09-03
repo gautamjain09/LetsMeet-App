@@ -56,16 +56,15 @@ class _MeetingScreenState extends State<MeetingScreen> {
             // ),
           ],
         ),
-        const Expanded(
-          child: Center(
-            child: Text(
-              "Create/Join Meeting with just a click!",
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 18,
-              ),
-            ),
+        Padding(
+          padding: const EdgeInsets.all(60.0),
+          child: Image.asset(
+            "assets/images/onMainPage.png",
           ),
+        ),
+        Text(
+          "Start/Join a Meeting with just a click",
+          style: TextStyle(color: Colors.grey, fontSize: 18),
         ),
       ],
     );

@@ -20,7 +20,7 @@ class MeetingButton extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-              color: buttonColor,
+              color: primaryColor,
               borderRadius: BorderRadius.circular(15),
             ),
             width: 55,

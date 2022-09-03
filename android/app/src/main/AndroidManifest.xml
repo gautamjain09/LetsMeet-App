@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.gautamjain09.lets_meet" xmlns:tools="http://schemas.android.com/tools">
-	<application tools:replace="android:label" android:label="lets_meet" android:name="${applicationName}" android:icon="@mipmap/ic_launcher">
+	<application tools:replace="android:label" android:label="Lets Meet" android:name="${applicationName}" android:icon="@mipmap/ic_launcher">
 		<!--  -->
 		<activity android:name=".MainActivity" android:exported="true" android:launchMode="singleTop" android:theme="@style/LaunchTheme" android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode" android:hardwareAccelerated="true" android:windowSoftInputMode="adjustResize">
 			<!--

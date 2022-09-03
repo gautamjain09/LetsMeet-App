@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       title: "Lets Meet",
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: backgroundColor,
-        primaryColor: buttonColor,
+        primaryColor: primaryColor,
       ),
       routes: {
         '/login-route': (context) => const LoginScreen(),
