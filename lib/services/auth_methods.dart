@@ -43,15 +43,17 @@ class AuthMethods {
       }
     } on FirebaseException catch (e) {
       showSnackBar(context, e.message!);
+      result = false;
     }
     return result;
   }
 
-  void signOut() async {
+  void signOut(BuildContext context) async {
     try {
       _auth.signOut();
+      Navigator.of(context).pushNamed('/login-route');
     } on FirebaseException catch (e) {
-      print(e.message!);
+      showSnackBar(context, e.message!);
     }
   }
 }

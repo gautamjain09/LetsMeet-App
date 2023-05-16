@@ -27,46 +27,49 @@ class _MeetingScreenState extends State<MeetingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            MeetingButton(
-              text: "New Meeting",
-              iconData: Icons.videocam,
-              onPressed: () {
-                createNewMeeting();
-              },
-            ),
-            MeetingButton(
-              text: "Join Meeting",
-              iconData: Icons.add_box_rounded,
-              onPressed: () {
-                joinMeeting(context);
-              },
-            ),
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Column(
+        children: [
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              MeetingButton(
+                text: "New Meeting",
+                iconData: Icons.videocam,
+                onPressed: () {
+                  createNewMeeting();
+                },
+              ),
+              MeetingButton(
+                text: "Join Meeting",
+                iconData: Icons.add_box_rounded,
+                onPressed: () {
+                  joinMeeting(context);
+                },
+              ),
 
-            // Pending To be Done.....
-            // MeetingButton(
-            //   text: "Schedule Meet",
-            //   iconData: Icons.calendar_today,
-            //   onPressed: () {},
-            // ),
-          ],
-        ),
-        Padding(
-          padding: const EdgeInsets.all(60.0),
-          child: Image.asset(
-            "assets/images/onMainPage.png",
+              // Pending To be Done.....
+              // MeetingButton(
+              //   text: "Schedule Meet",
+              //   iconData: Icons.calendar_today,
+              //   onPressed: () {},
+              // ),
+            ],
           ),
-        ),
-        Text(
-          "Start/Join a Meeting with just a click",
-          style: TextStyle(color: Colors.grey, fontSize: 18),
-        ),
-      ],
+          Padding(
+            padding: const EdgeInsets.all(60.0),
+            child: Image.asset(
+              "assets/images/onMainPage.png",
+            ),
+          ),
+          Text(
+            "Start/Join a Meeting with just a click",
+            style: TextStyle(color: Colors.grey, fontSize: 18),
+          ),
+        ],
+      ),
     );
   }
 }

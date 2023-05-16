@@ -15,7 +15,7 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        primary: primaryColor,
+        backgroundColor: primaryColor,
         minimumSize: Size(
           MediaQuery.of(context).size.width / 2,
           45,
@@ -26,7 +26,10 @@ class CustomButton extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
+        style: const TextStyle(
+          fontSize: 15,
+          fontWeight: FontWeight.w400,
+        ),
       ),
     );
   }

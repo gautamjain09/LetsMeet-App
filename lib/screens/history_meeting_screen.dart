@@ -22,6 +22,7 @@ class _HistoryMeetingScreenState extends State<HistoryMeetingScreen> {
           );
         }
         return ListView.builder(
+          shrinkWrap: true,
           itemCount: (snapshot.data! as dynamic).docs.length,
           itemBuilder: ((context, index) => ListTile(
                 title: Padding(
