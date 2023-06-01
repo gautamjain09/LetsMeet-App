@@ -17,7 +17,6 @@ migrate_working_dir/
 .idea/
 
 # Google API Keys
-/.gitignore
 .gitignore
 /android/app/google-services.json
 /android/key.properties
